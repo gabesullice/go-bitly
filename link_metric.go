@@ -1,9 +1,13 @@
 package bitly
 
+// LinkMetricService is a receiver for functions making requests against the
+// Bitly API link_metric endpoint.
 type LinkMetricService struct {
 	client *Client
 }
 
+// LinkMetric holds data returned from any of the Bitly API link_metric
+// endpoints.
 type LinkMetric struct {
 	AggregateLink   []byte `json:"aggregate_link"`
 	LinkClicks      uint64 `json:"link_clicks"`
@@ -20,10 +24,15 @@ type LinkMetric struct {
 	ReferringDomains []map[string]interface{} `json:"referring_domains"`
 }
 
+// LinkMetricOptions embeds the generally available requests parameters, and
+// holds any link_metric specific query parameters.
 type LinkMetricOptions struct {
 	Options
 }
 
+// Request the number of clicks on a bitlink.
+//
+// Bitly API docs: http://dev.bitly.com/link_metrics.html#v3_link_clicks
 func (s *LinkMetricService) Clicks(link string, opts LinkMetricOptions) LinkMetric {
 	return LinkMetric{}
 }

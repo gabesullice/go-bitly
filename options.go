@@ -1,5 +1,7 @@
 package bitly
 
+// Options holds possible query string parameters generally
+// available across the Bitly API.
 type Options struct {
 	Limit           uint        `url:"limit"`
 	Link            []byte      `url:"link"`

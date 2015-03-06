@@ -22,10 +22,15 @@ type Client struct {
 	LinkMetric *LinkMetricService
 }
 
+// NewClient returns a new Bitly API client. If a nil httpClient is
+// provided, http.DefaultClient will be used. To use API methods which require
+// authentication, provide an http.Client that will perform the authentication
+// for you (such as that provided by the goauth2 library).
 func NewClient(httpClient *http.Client) *Client {
 	if httpClient == nil {
 		httpClient = http.DefaultClient
 	}
+
 	baseURL, _ := url.Parse(baseDefaultURL + versionDefault)
 
 	c := &Client{client: httpClient, BaseURL: baseURL}
